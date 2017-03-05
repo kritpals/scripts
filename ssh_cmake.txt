@@ -1,0 +1,50 @@
+
+############################ PC ##########
+tar -xf libssh-0.7.3.tar.xz 
+cd libssh-0.7.3/
+mkdir build
+cd build/
+cmake -DCMAKE_INSTALL_PREFIX=/home/kritpal/temp/ssh -DWITH_INTERNAL_DOC=OFF -DWITH_STATIC_LIB=ON -DWITH_TESTING=OFF -DWITH_SERVER=OFF -DWITH_EXAMPLES=OFF -DCMAKE_BUILD_TYPE=Debug -DCMAKE_TOOLCHAIN_FILE=../ ..
+----------or---------
+cmake -DCMAKE_INSTALL_PREFIX=/home/kritpal/temp/ssh -DWITH_INTERNAL_DOC=OFF -DWITH_PCAP=OFF -DWITH_DEBUG_CALLTRACE=OFF -DWITH_NACL=OFF -DWITH_STATIC_LIB=OFF -DWITH_TESTING=OFF -DWITH_SERVER=OFF -DWITH_EXAMPLES=OFF -DCMAKE_BUILD_TYPE=Debug -DCMAKE_TOOLCHAIN_FILE=../ -DWITH_GSSAPI=OFF -DWITH_BENCHMARKS=OFF -DWITH_GCRYPT=OFF .. -DOPENSSL_CRYPTO_LIBRARY=/lib/x86_64-linux-gnu/ -DOPENSSL_SSL_LIBRARY=/lib/x86_64-linux-gnu/ -DOPENSSL_ROOT_DIR=/usr/include/openssl/  -DOPENSSL_INCLUDE_DIR=/home/kritpal/temp/openssl_AL3/include/ -DOPENSSL_LIBRARIES=/lib/x86_64-linux-gnu/ -DZLIB_LIBRARY=/lib/x86_64-linux-gnu/ -DZLIB_INCLUDE_DIR=/home/kritpal/al3/source/lib/include
+cmake --build .
+make 
+make install
+########################
+tar -xf libssh-0.7.3.tar.xz 
+cd libssh-0.7.3/
+mkdir build
+cd build/
+cp zlib.h zconf.h libssh-0.7.3/include
+cmake -DCMAKE_TOOLCHAIN_FILE=../cross-mediatek.cmake -DZLIB_LIBRARY=/home/kritpal/al3/source/lib/lib/libz-1.2.3.so  -DWITH_INTERNAL_DOC=OFF -DWITH_TESTING=OFF -DWITH_BENCHMARKS=OFF -DWITH_SERVER=OFF -DWITH_EXAMPLES=OFF -DCMAKE_BUILD_TYPE=Debug -DOPENSSL_ROOT_DIR=/home/kritpal/temp/openssl_AL3/  -DOPENSSL_INCLUDE_DIR=/home/kritpal/temp/openssl_AL3/include/ -DOPENSSL_LIBRARIES=/home/kritpal/temp/openssl_AL3/lib -DCMAKE_INSTALL_PREFIX=/home/kritpal/temp/ssh -DWITH_PCAP=OFF -DWITH_DEBUG_CALLTRACE=OFF -DWITH_NACL=OFF -DWITH_GSSAPI=OFF -DDOXYGEN_EXECUTABLE=/usr/bin/doxygen -DDOXYFILE_IN=../doc/Doxyfile.in -DWITH_GCRYPT=OFF .. -DOPENSSL_CRYPTO_LIBRARY=/home/kritpal/temp/openssl_AL3/lib/ -DOPENSSL_SSL_LIBRARY=/home/kritpal/temp/openssl_AL3/lib/ -DWITH_STATIC_LIB=ON
+make
+make install
+
+
+
+File :   cross-mediatek.cmake
+
+
+set(CROSS_PATH /opt/buildroot-gcc463/usr)
+
+# Target operating system name.
+set(CMAKE_SYSTEM_NAME Linux)
+
+# Name of C compiler.
+set(CMAKE_C_COMPILER "${CROSS_PATH}/bin/mipsel-linux-gcc")
+set(CMAKE_CXX_COMPILER "${CROSS_PATH}/bin/mipsel-linux-g++")
+
+# Where to look for the target environment. (More paths can be added here)
+set(CMAKE_FIND_ROOT_PATH "${CROSS_PATH}")
+
+
+cmake -DCMAKE_TOOLCHAIN_FILE=../cross-mediatek.cmake -DZLIB_LIBRARY=/home/kritpal/donut/source/lib/lib/libz.so  -DWITH_INTERNAL_DOC=OFF -DWITH_TESTING=OFF -DWITH_BENCHMARKS=OFF -DWITH_SERVER=OFF -DWITH_EXAMPLES=OFF -DCMAKE_BUILD_TYPE=Debug -DOPENSSL_ROOT_DIR=/home/kritpal/temp/openssl_AL2/  -DOPENSSL_INCLUDE_DIR=/home/kritpal/temp/openssl_AL2/include/ -DOPENSSL_LIBRARIES=/home/kritpal/temp/openssl_AL2/lib -DCMAKE_INSTALL_PREFIX=/home/kritpal/temp/ssh -DWITH_PCAP=OFF -DWITH_DEBUG_CALLTRACE=OFF -DWITH_NACL=OFF -DWITH_GSSAPI=OFF -DDOXYGEN_EXECUTABLE=/usr/bin/doxygen -DDOXYFILE_IN=../doc/Doxyfile.in -DWITH_GCRYPT=OFF .. -DOPENSSL_CRYPTO_LIBRARY=/home/kritpal/temp/openssl_AL2/lib/libcrypto.so -DOPENSSL_SSL_LIBRARY=/home/kritpal/temp/openssl_AL2/lib/libssl.so
+
+
+
+
+
+cmake ../ -DOPENSSL_CRYPTO_LIBRARY=/home/kritpal/al3/source/lib/lib/libcrypto.so.1.0.0 -DOPENSSL_SSL_LIBRARY=/home/kritpal/al3/source/lib/lib/libssl.so.1.0.0 -DCMAKE_INSTALL_PREFIX=/home/kritpal/Downloads/curl-curl-7_52_1/data/ -DCMAKE_USE_LIBSSH2=OFF
+
+
+

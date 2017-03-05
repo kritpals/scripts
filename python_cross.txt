@@ -1,0 +1,21 @@
+####Compile python for pc first then do cross compile.
+export CC=/opt/buildroot-gcc342/mipsel-linux-gcc
+export CFLAGS=-I/opt/buildroot-gcc342/include
+export CC=/opt/buildroot-gcc342/bin/mipsel-linux-gcc
+ 
+export CC=/opt/buildroot-gcc342/bin/mipsel-linux-gcc
+export LDFLAGS=-L/opt/buildroot-gcc342/lib
+export CC=/opt/buildroot-gcc342/bin/mipsel-linux-a
+      
+export AR=/opt/buildroot-gcc342/bin/mipsel-linux-ar
+export RANLIB=/opt/buildroot-gcc342/bin/mipsel-linux-ranlib 
+ export HOSTPGEN=/home/kritpal/Downloads/Python-2.7.11_pc/Parser/pgen
+
+export CXX=/opt/buildroot-gcc342/bin/mipsel-linux-g++ 
+
+
+export HOSTPYTHON=/home/kritpal/Downloads/Python-2.7.11_pc/python
+
+CONFIG_SITE=config.site ./configure --host=mipsel-linux --build=mipsel --prefix=/home/kritpal/Downloads/Python-2.7.11/AL2/ --disable-ipv6 --enable-shared
+make 
+make -i install

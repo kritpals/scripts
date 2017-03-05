@@ -1,0 +1,21 @@
+export TARGET_PATH=/home/kritpal/coconut/openwrt-2.4.2011-trunk_old/staging_dir/toolchain-arm_gcc-4.5.1+l_uClibc-0.9.32_eabi/bin/:$PATH
+export TARGET_TOOL=arm-openwrt-linux
+export TARGET_CC=$TARGET_TOOL-gcc
+export TARGET_AR=$TARGET_TOOL-ar
+export TARGET_RANLIB=$TARGET_TOOL-ranlib
+export TARGET_LINK=$TARGET_CC
+export TARGET_CFLAGS="-Os  -shared -fPIC -fno-caller-saves -fhonour-copts  -msoft-float"
+export TARGET_CXX=$TARGET_TOOL-g++
+export TARGET_CPPFLAGS="-I/home/kritpal/coconut/openwrt-2.4.2011-trunk_old/staging_dir/toolchain-arm_gcc-4.5.1+l_uClibc-0.9.32_eabi/include "
+export STAGING_DIR=/home/kritpal/coconut/openwrt-2.4.2011-trunk_old/staging_dir/
+scons  TARGET=openwrt BINDINGS="core,cpp" OS=openwrt CPU=openwrt TARGET_LINKFLAGS="-shared -L/home/kritpal/coconut/openwrt-2.4.2011-trunk/staging_dir/target-arm_uClibc-0.9.32_eabi/usr/lib/" V=1 VARIANT=release ICE=off BR=on BT=off WS=off SERVICES="about,notification,controlpanel,config"  $@
+
+
+
+
+For pc
+scons  BINDINGS="core,cpp"  VARIANT=release ICE=off BR=on BT=off WS=off SERVICES="about,notification,controlpanel,config"  $@
+
+
+
+scons -C /home/kritpal/coconut/openwrt-2.4.2011-trunk/build_dir/target-arm_uClibc-0.9.32_eabi/alljoyn-14.12.00a-src  -j8 WS=off CPU=openwrt OS=openwrt "BINDINGS=cpp, c," "SERVICES= about," "BUILD_SERVICES_SAMPLES=off" "VARIANT=release" BR=off ICE=off POLICYDB=on "TARGET_CC=arm-openwrt-linux-uclibcgnueabi-gcc" "TARGET_CXX=arm-openwrt-linux-uclibcgnueabi-g++" "TARGET_CFLAGS=-O -pipe -march=armv7-a -mtune=cortex-a9 -funit-at-a-time -mfpu=neon -ftree-vectorize -mfloat-abi=softfp -fhonour-copts -fPIC" "TARGET_CPPFLAGS=-I/home/kritpal/coconut/openwrt-2.4.2011-trunk/staging_dir/target-arm_uClibc-0.9.32_eabi/usr/include -I/home/kritpal/coconut/openwrt-2.4.2011-trunk/staging_dir/target-arm_uClibc-0.9.32_eabi/include -I/home/kritpal/coconut/openwrt-2.4.2011-trunk/staging_dir/toolchain-arm_gcc-4.5.1+l_uClibc-0.9.32_eabi/usr/include -I/home/kritpal/coconut/openwrt-2.4.2011-trunk/staging_dir/toolchain-arm_gcc-4.5.1+l_uClibc-0.9.32_eabi/include -fPIC" "TARGET_PATH=/home/kritpal/coconut/openwrt-2.4.2011-trunk/staging_dir/toolchain-arm_gcc-4.5.1+l_uClibc-0.9.32_eabi/bin:/home/kritpal/coconut/openwrt-2.4.2011-trunk/staging_dir/host/bin:/home/kritpal/coconut/openwrt-2.4.2011-trunk/staging_dir/toolchain-arm_gcc-4.5.1+l_uClibc-0.9.32_eabi/bin:/home/kritpal/coconut/openwrt-2.4.2011-trunk/staging_dir/host/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games" "TARGET_LINKFLAGS=-L/home/kritpal/coconut/openwrt-2.4.2011-trunk/staging_dir/target-arm_uClibc-0.9.32_eabi/usr/lib -L/home/kritpal/coconut/openwrt-2.4.2011-trunk/staging_dir/target-arm_uClibc-0.9.32_eabi/lib -L/home/kritpal/coconut/openwrt-2.4.2011-trunk/staging_dir/toolchain-arm_gcc-4.5.1+l_uClibc-0.9.32_eabi/usr/lib -L/home/kritpal/coconut/openwrt-2.4.2011-trunk/staging_dir/toolchain-arm_gcc-4.5.1+l_uClibc-0.9.32_eabi/lib" "TARGET_LINK=arm-openwrt-linux-uclibcgnueabi-gcc" "TARGET_AR=" "TARGET_RANLIB=" "STAGING_DIR=/home/kritpal/coconut/openwrt-2.4.2011-trunk/staging_dir/target-arm_uClibc-0.9.32_eabi" 
